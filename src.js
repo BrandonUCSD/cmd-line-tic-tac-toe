@@ -20,6 +20,11 @@ const winConditions = [
   [2, 4, 6]
 ];
 
+const checkTie = () => {
+  let doneBoard = new Set(board);
+  return [...doneBoard].length === 2;
+};
+
 const checkWin = (player) => {
   let mark;
   for (let i = 0; i < winConditions.length; i++) {
@@ -41,9 +46,28 @@ const checkWin = (player) => {
 addToBoard(0,'X');
 addToBoard(1,'X');
 addToBoard(2,'X');
+addToBoard(3,'O');
+addToBoard(4,'O');
+addToBoard(5,'X');
+addToBoard(6,'X');
+addToBoard(7,'O');
+addToBoard(8,'O');
+
+
+
+/* board should be this
+
+ X  |  X  |  X
+----------------
+' ' | ' ' | ' '
+----------------
+' ' | ' ' | ' '
+
+*/
 
 console.log(`  ${board[0]} | ${board[1]} | ${board[2]} \n ------------ \n  ${board[3]} | ${board[4]} | ${board[5]} \n ------------ \n  ${board[6]} | ${board[7]} | ${board[8]} `);
 
-console.log(checkWin('X'));
-console.log(checkWin('0'));
+console.log(checkWin('X')); // true
+console.log(checkWin('0')); // false
+console.log(checkTie()); // true
 
