@@ -1,5 +1,10 @@
+var prompt = require('prompt');
 
 var board = [ ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' ];
+
+const showBoard = () => {
+  console.log(`  ${board[0]} | ${board[1]} | ${board[2]} \n ------------ \n  ${board[3]} | ${board[4]} | ${board[5]} \n ------------ \n  ${board[6]} | ${board[7]} | ${board[8]} `);
+}
 
 const addToBoard = (place, mark) => {
   board[place] = mark;
@@ -41,33 +46,45 @@ const checkWin = (player) => {
   return false;
 }
 
+const playGame = (player) => {
+  console.log('current player is: ', player);
+  prompt.start();
+  prompt.get(['position'], function (err, result) {
+    // check if move is valid
+    // add move
+    // check win condition
+    // check tie condition
+    // switch to other player
+  });
+}
+
+
+playGame('X');
+
+// addToBoard(0,'X');
+// addToBoard(1,'X');
+// addToBoard(2,'X');
+// addToBoard(3,'O');
+// addToBoard(4,'O');
+// addToBoard(5,'X');
+// addToBoard(6,'X');
+// addToBoard(7,'O');
+// addToBoard(8,'O');
+
+
+
+// /* board should be this
+
+//  X  |  X  |  X
+// ----------------
+// ' ' | ' ' | ' '
+// ----------------
+// ' ' | ' ' | ' '
+
+// */
+
 // console.log(`  ${board[0]} | ${board[1]} | ${board[2]} \n ------------ \n  ${board[3]} | ${board[4]} | ${board[5]} \n ------------ \n  ${board[6]} | ${board[7]} | ${board[8]} `);
 
-addToBoard(0,'X');
-addToBoard(1,'X');
-addToBoard(2,'X');
-addToBoard(3,'O');
-addToBoard(4,'O');
-addToBoard(5,'X');
-addToBoard(6,'X');
-addToBoard(7,'O');
-addToBoard(8,'O');
-
-
-
-/* board should be this
-
- X  |  X  |  X
-----------------
-' ' | ' ' | ' '
-----------------
-' ' | ' ' | ' '
-
-*/
-
-console.log(`  ${board[0]} | ${board[1]} | ${board[2]} \n ------------ \n  ${board[3]} | ${board[4]} | ${board[5]} \n ------------ \n  ${board[6]} | ${board[7]} | ${board[8]} `);
-
-console.log(checkWin('X')); // true
-console.log(checkWin('0')); // false
-console.log(checkTie()); // true
-
+// console.log(checkWin('X')); // true
+// console.log(checkWin('0')); // false
+// console.log(checkTie()); // true
