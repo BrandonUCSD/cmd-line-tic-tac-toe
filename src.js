@@ -91,6 +91,8 @@ const playGame = (player) => {
 showBoardPositions();
 playGame('X');
 
+
+
 // addToBoard(0,'X');
 // addToBoard(1,'X');
 // addToBoard(2,'X');
@@ -100,8 +102,6 @@ playGame('X');
 // addToBoard(6,'X');
 // addToBoard(7,'O');
 // addToBoard(8,'O');
-
-
 
 // /* board should be this
 
