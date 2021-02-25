@@ -3,9 +3,17 @@ There will be 2 players and the first player will always be X. Just enter 'npm s
 
 
 An example of an empty board is this:
-
 ```
-  These are the positions on the board!
+    |   |
+ ------------
+    |   |
+ ------------
+    |   |
+```
+
+
+These are the positions on the board
+```
   0 | 1 | 2
  ------------
   3 | 4 | 5
