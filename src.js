@@ -4,7 +4,11 @@ var board = [ ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' ];
 
 const showBoard = () => {
   console.log(`  ${board[0]} | ${board[1]} | ${board[2]} \n ------------ \n  ${board[3]} | ${board[4]} | ${board[5]} \n ------------ \n  ${board[6]} | ${board[7]} | ${board[8]} `);
-}
+};
+
+const showBoardPositions = () => {
+  console.log(`These are the positions on the board!\n  0 | 1 | 2 \n ------------ \n  3 | 4 | 5 \n ------------ \n  6 | 7 | 8 `);
+};
 
 const addToBoard = (position, player) => {
   board[position] = player;
@@ -26,8 +30,12 @@ const winConditions = [
 ];
 
 const checkTie = () => {
-  let doneBoard = new Set(board);
-  return [...doneBoard].length === 2;
+  for (let i = 0; i < board.length; i++) {
+    if (board[i] === ' ') {
+      return false;
+    }
+  }
+  return true;
 };
 
 const checkWin = (player) => {
@@ -63,6 +71,7 @@ const playGame = (player) => {
       // check tie condition
       if (checkTie()) {
         console.log('It is a tie!');
+        return;
       }
       // switch to other player
       if (player === 'X') {
@@ -73,13 +82,13 @@ const playGame = (player) => {
 
     } else {
       console.log('invalid input, please try again');
+      showBoard();
       playGame(player);
     }
   });
 }
 
-console.log(`These are the positions on the board!\n  0 | 1 | 2 \n ------------ \n  3 | 4 | 5 \n ------------ \n  6 | 7 | 8 `);
-
+showBoardPositions();
 playGame('X');
 
 // addToBoard(0,'X');
