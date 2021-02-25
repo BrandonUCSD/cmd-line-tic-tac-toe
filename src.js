@@ -6,8 +6,8 @@ const showBoard = () => {
   console.log(`  ${board[0]} | ${board[1]} | ${board[2]} \n ------------ \n  ${board[3]} | ${board[4]} | ${board[5]} \n ------------ \n  ${board[6]} | ${board[7]} | ${board[8]} `);
 }
 
-const addToBoard = (place, mark) => {
-  board[place] = mark;
+const addToBoard = (position, player) => {
+  board[position] = player;
 }
 
 const checkValidMove = (position) => {
@@ -31,9 +31,8 @@ const checkTie = () => {
 };
 
 const checkWin = (player) => {
-  let mark;
   for (let i = 0; i < winConditions.length; i++) {
-    mark = 0;
+    let mark = 0;
     for (let j = 0; j < winConditions[i].length; j++) {
       if (board[winConditions[i][j]] === player) {
         mark++;
@@ -50,14 +49,36 @@ const playGame = (player) => {
   console.log('current player is: ', player);
   prompt.start();
   prompt.get(['position'], function (err, result) {
+    const { position } = result;
     // check if move is valid
-    // add move
-    // check win condition
-    // check tie condition
-    // switch to other player
+    if (checkValidMove(position)) {
+      // add move
+      addToBoard(position, player);
+      showBoard();
+      // check win condition
+      if (checkWin(player)) {
+        console.log(`Player ${player} has won!`);
+        return;
+      }
+      // check tie condition
+      if (checkTie()) {
+        console.log('It is a tie!');
+      }
+      // switch to other player
+      if (player === 'X') {
+        playGame('O');
+      } else {
+        playGame('X');
+      }
+
+    } else {
+      console.log('invalid input, please try again');
+      playGame(player);
+    }
   });
 }
 
+console.log(`These are the positions on the board!\n  0 | 1 | 2 \n ------------ \n  3 | 4 | 5 \n ------------ \n  6 | 7 | 8 `);
 
 playGame('X');
 
